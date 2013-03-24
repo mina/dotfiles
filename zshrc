@@ -31,8 +31,6 @@ else
   export CDPATH=$CDPATH:/Users/mina/Repos
 fi
 
->>>>>>> 921cbe7... CDPATH cross platform :)
-
 export FCEDITOR=`which vim`
 
 export PROMPT="$PROMPT%! "
