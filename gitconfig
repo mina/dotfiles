@@ -1,0 +1,28 @@
+[user]
+	name = Mina Almasry
+	email = almasry.mina@hotmail.com
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+	ui = true
+[alias]
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  a = add
+  ap = add -p
+  s = status -sb
+  co = checkout
+  cof = checkout --
+  br = branch
+  cm = commit
+  sm = submodule
+  ph = push
+  pl = pull
+[push]
+  default = current
+[log]
+  decorate = true
+  format = graph
+[core]
+	autocrlf = input

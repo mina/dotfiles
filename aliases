@@ -1,0 +1,47 @@
+alias -g ..=".."
+alias -g ...="../.."
+alias -g ....="../../.."
+alias -g .....="../../../.."
+alias -g ......="../../../../.."
+alias -g .......="../../../../../../.."
+# 7 directories should be enough for anyone - bill g
+# # thanks sean.
+
+# ls with some arguments
+alias l="ls"
+alias ll="ls -lh"               # list long
+alias la="ls -a"                # list all
+alias lla="la -alh"             # list all long
+alias lz="ls -tr"               # list by date
+alias lsa="ls -ld .*"           # list only dotfiles
+alias lsd="ls -d -- *(/)"       # list only dirs
+alias lsdirs="ls -d -- *(-/DN)" # list only dirs and links
+alias lsx="ls -- *(*)"          # list only executables
+alias lsnew="ls -rtl"           # list by new
+alias lsold="ls -tl"            # list by old
+alias lssmall="ls -Sl"          # list by small
+alias lsbig="ls -Slr"           # list by big
+
+alias be="bundle exec"
+
+alias tm="tmux -2"
+
+# Quick edit zshrc
+alias ez='vim ~/.zshrc'
+alias sz='source ~/.zshrc'
+
+# quick edit aliase
+alias ea='vim ~/.aliases'
+alias sa='source ~/.aliases'
+
+<<<<<<< HEAD
+#interactive rm
+alias rm="rm -i"
+
+#human readable disk space
+alias df="df -h"
+
+alias h="history | tail"
+=======
+alias rps="cd ~/Repos"
+>>>>>>> 5fa40a6... after reading part on shell scripting

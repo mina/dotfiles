@@ -1,1 +1,9 @@
 *~
+vim/bundle/command-t
+vim/plugin/command-t.vim
+*.[oa]
+vim/.netrwhist
+Icon*
+tags
+id_dsa*
+github_rsa*
