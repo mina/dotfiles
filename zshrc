@@ -20,9 +20,8 @@ export PATH=$PATH:/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin
 export PATH=$PATH:/usr/local/mysql/bin
 export PATH=$PATH:$HOME/.rvm/bin
 
-<<<<<<< HEAD
 export CDPATH=$CDPATH:/Users/mina/Repos:/Users/mina
-=======
+
 platform=`uname`
 
 if [[ $platform == "Linux" ]] ; then

@@ -34,7 +34,6 @@ alias sz='source ~/.zshrc'
 alias ea='vim ~/.aliases'
 alias sa='source ~/.aliases'
 
-<<<<<<< HEAD
 #interactive rm
 alias rm="rm -i"
 
@@ -42,6 +41,4 @@ alias rm="rm -i"
 alias df="df -h"
 
 alias h="history | tail"
-=======
 alias rps="cd ~/Repos"
->>>>>>> 5fa40a6... after reading part on shell scripting
