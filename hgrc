@@ -1,0 +1,11 @@
+[defaults]
+diff = -p -U 8
+qdiff = -p -U 8
+qnew = -U
+
+[diff]
+git = 1
+unified = 8
+
+[ui]
+username = Mina Almasry <almasry.mina@gmail.com>
