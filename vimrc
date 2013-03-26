@@ -171,11 +171,8 @@ nnoremap <leader>gc :Gcommit
 nnoremap <leader>gs :Gstatus
 nnoremap <leader>gb :Gblame
 ":autocmd filetype lua
-iabbrev mtb MOAITextbox
 ":autocmd FileType lua
-iabbrev mp MOAIProp2D
 iabbrev ret return
-iabbrev func function
 onoremap b /end<cr>
 onoremap in( :<c-u>normal! f(vi(<cr>
 onoremap in" :<c-u>normal! f"vi"<cr>
@@ -259,3 +256,6 @@ com! DiffSaved call s:DiffWithSaved()
 nnoremap <leader>ft :set filetype=
 :let g:html_indent_script1 = "inc"
 :let g:html_indent_style1 = "inc"
+
+" set clipboard
+set clipboard=unnamedplus
