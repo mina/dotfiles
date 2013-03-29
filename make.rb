@@ -24,6 +24,7 @@ files.each { |file|
     puts "#{fullpath} not found..."
   end
 
-  puts "linking " + File.realpath(File.dirname(__FILE__)) + "/#{file}" + " to " + fullpath
+  puts "linking " + File.realpath(File.dirname(__FILE__)) +
+    "/#{file}" + " to " + fullpath
   File.symlink((File.realpath(File.dirname(__FILE__)) + "/#{file}"), fullpath)
 }
