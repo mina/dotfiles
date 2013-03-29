@@ -11,6 +11,7 @@ end
 
 files.each { |file|
   fullpath = ENV['HOME'] + "/." + file
+  puts fullpath
 
   if File.exists? fullpath
     puts "Removing #{fullpath}..."
@@ -19,8 +20,10 @@ files.each { |file|
     else
       FileUtils.rm_rf fullpath
     end
+  else
+    puts "#{fullpath} not found..."
   end
 
-  puts "linking " + File.dirname(__FILE__) + "/#{file}" + " to " + fullpath
-  File.symlink File.dirname(__FILE__) + "/#{file}", fullpath
+  puts "linking " + File.realpath(File.dirname(__FILE__)) + "/#{file}" + " to " + fullpath
+  File.symlink((File.realpath(File.dirname(__FILE__)) + "/#{file}"), fullpath)
 }
