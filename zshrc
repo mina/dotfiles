@@ -20,7 +20,7 @@ export PATH=$PATH:/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin
 export PATH=$PATH:/usr/local/mysql/bin
 export PATH=$PATH:$HOME/.rvm/bin
 
-export CDPATH=$CDPATH:/Users/mina/Repos:/Users/mina
+export CDPATH=$CDPATH:`echo $HOME`/Repos:`echo $HOME`
 
 platform=`uname`
 
