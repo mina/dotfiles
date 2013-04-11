@@ -9,7 +9,7 @@ if (RUBY_PLATFORM =~ /linux|darwin/) != nil
   files << "tmux.conf"
 end
 
-files.each { |file|
+files.each do |file|
   fullpath = ENV['HOME'] + "/." + file
   puts fullpath
 
@@ -27,4 +27,4 @@ files.each { |file|
   puts "linking " + File.realpath(File.dirname(__FILE__)) +
     "/#{file}" + " to " + fullpath
   File.symlink((File.realpath(File.dirname(__FILE__)) + "/#{file}"), fullpath)
-}
+end
