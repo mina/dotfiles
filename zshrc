@@ -19,6 +19,7 @@ export PATH=$PATH:/Library/Frameworks/Python.framework/Versions/2.7/bin
 export PATH=$PATH:/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin
 export PATH=$PATH:/usr/local/mysql/bin
 export PATH=$PATH:$HOME/.rvm/bin
+export PATH=$PATH:/usr/local/go/bin # go path
 
 export CDPATH=$CDPATH:`echo $HOME`/Repos:`echo $HOME`
 
