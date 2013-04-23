@@ -23,6 +23,11 @@ export PATH=$PATH:/usr/local/go/bin # go path
 
 export CDPATH=$CDPATH:`echo $HOME`/Repos:`echo $HOME`
 
+# go path
+export GOPATH=$HOME/Repos/mygo
+export PATH=$PATH:/$HOME/Repos/mygo/bin
+export GOROOT=/usr/local/go
+
 platform=`uname`
 
 if [[ $platform == "Linux" ]] ; then
