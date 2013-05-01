@@ -5,7 +5,7 @@ if __name__ == "__main__":
   import re
   import os
 
-  files = [ "gitconfig", "vim", "vimrc", "zshrc" ]
+  files = [ "gitconfig", "vim", "vimrc", "zshrc", "myconfigs", "bashrc" ]
 
 
   if (re.search(r"(linux|darwin)", sys.platform)):
