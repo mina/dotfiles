@@ -1,9 +1,9 @@
-alias -g ..=".."
-alias -g ...="../.."
-alias -g ....="../../.."
-alias -g .....="../../../.."
-alias -g ......="../../../../.."
-alias -g .......="../../../../../../.."
+alias  ..=".."
+alias  ...="../.."
+alias  ....="../../.."
+alias  .....="../../../.."
+alias  ......="../../../../.."
+alias  .......="../../../../../../.."
 # 7 directories should be enough for anyone - bill g
 # # thanks sean.
 
