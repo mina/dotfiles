@@ -5,12 +5,13 @@ if __name__ == "__main__":
   import re
   import os
 
-  files = [ "gitconfig", "vim", "vimrc", "zshrc", "myconfigs", "bash_profile" ]
+  files = [ "gitconfig", "vim", "vimrc", "myconfigs", "bash_profile" ]
+  mac_linux_only_files = [ "inputrc", "zshrc" ]
 
 
   if (re.search(r"(linux|darwin)", sys.platform)):
-    print "Running on on linux or Mac. including tmux.conf"
-    files.append("tmux.conf")
+    print "Running on on linux or Mac."
+    files.append(mac_linux_only_files)
 
   for file in files:
     fullpath = os.environ['HOME'] + "/." + file
