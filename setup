@@ -4,6 +4,8 @@ import sys
 import re
 import os
 
+files = [ "gitconfig", "vim", "vimrc", "myconfigs", "bash_profile" ]
+mac_linux_only_files = [ "inputrc", "zshrc" ]
 
 def print_usage():
   print "Usage:"
@@ -12,8 +14,7 @@ def print_usage():
   print "uninstall\tUninstall dotfiles from ~/.<file>"
 
 def get_platform_files():
-  files = [ "gitconfig", "vim", "vimrc", "myconfigs", "bash_profile" ]
-  mac_linux_only_files = [ "inputrc", "zshrc" ]
+  global files, mac_linux_only_files
   if (re.search(r"(linux|darwin)", sys.platform)):
     print "Running on on linux or Mac."
     files.extend(mac_linux_only_files)
