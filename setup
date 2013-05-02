@@ -4,8 +4,8 @@ import sys
 import re
 import os
 
-files = [ "gitconfig", "vim", "vimrc", "myconfigs", "bash_profile" ]
-mac_linux_only_files = [ "inputrc", "zshrc" ]
+files = [ "gitconfig", "vim", "vimrc", "myconfigs", "bashrc", "aliases" ]
+mac_linux_only_files = [ "inputrc", "zshrc", "tmux.conf" ]
 
 def print_usage():
   print "Usage:"

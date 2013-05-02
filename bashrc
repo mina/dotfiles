@@ -41,3 +41,7 @@ export TODO="t"
 
 # Load Bash It
 source $BASH_IT/bash_it.sh
+
+# load my stuff
+source ~/.myconfigs
+source ~/.aliases
