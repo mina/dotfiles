@@ -3,15 +3,23 @@
 import sys
 import re
 import os
+import platform
+import shutil
 
 files = [ "gitconfig", "vim", "vimrc", "myconfigs", "bashrc", "aliases" ]
 mac_linux_only_files = [ "inputrc", "zshrc", "tmux.conf" ]
 
+if platform.system() == "Windows":
+  dir_delim = "\\"
+else:
+  dir_delm = "/"
+
 def print_usage():
+  global dir_delim
   print "Usage:"
   print "help\t\tPrint usage"
-  print "install\t\tInstall dotfiles to ~/.<file>"
-  print "uninstall\tUninstall dotfiles from ~/.<file>"
+  print "install\t\tInstall dotfiles to ~" + dir_delim + ".<file>"
+  print "uninstall\tUninstall dotfiles from ~" + dir_delim + ".<file>"
 
 def get_platform_files():
   global files, mac_linux_only_files
@@ -28,27 +36,39 @@ def install():
   os.chdir(os.path.abspath(os.path.dirname(__file__)))
 
   for file in files_to_install:
-    fullpath = os.environ['HOME'] + "/." + file
+    if platform.system() == "Windows":
+      fullpath = os.path.expanduser("~") + "\." + file
+    else:
+      fullpath = os.path.expanduser("~") + dir_delim + "." + file
 
     if os.path.exists(fullpath) or os.path.islink(fullpath):
       print "Removing %s... " % fullpath
-      os.remove(fullpath)
+      try:
+        os.remove(fullpath)
+      except(OSError):
+        shutil.rmtree(fullpath)
     else:
       print "File %s not found..." % fullpath
 
-    source = (os.environ['HOME'] + "/." + file)
-    dest = os.path.realpath(os.path.dirname(__file__)) + "/" + file
-    print "linking " + source + " to " + dest
+    source = (os.path.expanduser("~") + dir_delim + "." + file)
+    dest = os.path.realpath(os.path.dirname(__file__)) + dir_delim + file
+    print "copying " + source + " to " + dest
 
-    os.symlink(dest, source)
+    try:
+      shutil.copy2(dest, source)
+    except(IOError):
+      shutil.copytree(dest, source)
 
 def uninstall():
   files_to_uninstall = get_platform_files()
   for file in files_to_uninstall:
-    fullpath = os.environ['HOME'] + "/." + file
+    fullpath = os.path.expanduser("~") + dir_delim + "." + file
     if os.path.exists(fullpath) or os.path.islink(fullpath):
-      print "Unlinking " + fullpath + "..."
-      os.unlink(fullpath)
+      print "Removing " + fullpath + "..."
+      try:
+        os.unlink(fullpath)
+      except:
+        shutil.rmtree(fullpath)
     else:
       print "File %s not found..." % fullpath
 
