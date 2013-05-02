@@ -7,7 +7,9 @@ ZSH_THEME="robbyrussell"
 #dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
 
-source $ZSH/oh-my-zsh.sh
+if [ -f $ZSH/oh-my-zsh.sh ] ; then
+  . $ZSH/oh-my-zsh
+fi
 
 # turn off zsh's autocorrect
 unsetopt correct_all
