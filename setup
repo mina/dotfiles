@@ -25,10 +25,12 @@ def get_platform_files():
 def install():
   files_to_install = get_platform_files()
 
+  os.chdir(os.path.abspath(os.path.dirname(__file__)))
+
   for file in files_to_install:
     fullpath = os.environ['HOME'] + "/." + file
 
-    if os.path.exists(fullpath):
+    if os.path.exists(fullpath) or os.path.islink(fullpath):
       print "Removing %s... " % fullpath
       os.remove(fullpath)
     else:
@@ -44,9 +46,11 @@ def uninstall():
   files_to_uninstall = get_platform_files()
   for file in files_to_uninstall:
     fullpath = os.environ['HOME'] + "/." + file
-    if os.path.exists(fullpath):
+    if os.path.exists(fullpath) or os.path.islink(fullpath):
       print "Unlinking " + fullpath + "..."
       os.unlink(fullpath)
+    else:
+      print "File %s not found..." % fullpath
 
 if __name__ == "__main__":
   if len(sys.argv) != 2:
