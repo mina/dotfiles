@@ -17,4 +17,12 @@ export GOROOT=/usr/local/go
 
 export FCEDITOR=`which vim`
 
-#export PROMPT="$PROMPT%! "
+# run tmux if platform is linux or mac
+PLATFORM=`uname`
+if [[ $PLATFORM == *Linux* || $PLATFORM == *mac* ]]
+then
+  if [[ $TERM != "screen" ]]
+  then
+    exec tmux -2
+  fi
+fi
