@@ -12,7 +12,7 @@ mac_linux_only_files = [ "inputrc", "zshrc", "tmux.conf" ]
 if platform.system() == "Windows":
   dir_delim = "\\"
 else:
-  dir_delm = "/"
+  dir_delim = "/"
 
 def print_usage():
   global dir_delim
@@ -50,14 +50,21 @@ def install():
     else:
       print "File %s not found..." % fullpath
 
-    source = (os.path.expanduser("~") + dir_delim + "." + file)
-    dest = os.path.realpath(os.path.dirname(__file__)) + dir_delim + file
+    source = os.path.realpath(os.path.dirname(__file__)) + dir_delim + file
+    dest = (os.path.expanduser("~") + dir_delim + "." + file)
     print "copying " + source + " to " + dest
 
-    try:
-      shutil.copy2(dest, source)
-    except(IOError):
-      shutil.copytree(dest, source)
+    if os.path.isdir(source):
+      for filename in os.listdir(source):
+        if os.path.isdir(source + dir_delim + filename):
+          shutil.copytree(source + dir_delim + filename, \
+                          dest + dir_delim + filename)
+        else:
+          shutil.copy2(source + dir_delim + filename, \
+                       dest + dir_delim + filename)
+    else:
+      shutil.copy2(source, dest)
+
 
 def uninstall():
   files_to_uninstall = get_platform_files()
