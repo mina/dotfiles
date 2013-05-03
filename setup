@@ -55,6 +55,7 @@ def install():
     print "copying " + source + " to " + dest
 
     if os.path.isdir(source):
+      os.makedirs(dest)
       for filename in os.listdir(source):
         if os.path.isdir(source + dir_delim + filename):
           shutil.copytree(source + dir_delim + filename, \
