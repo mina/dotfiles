@@ -71,6 +71,7 @@ def install():
 
 def uninstall():
   files_to_uninstall = get_platform_files()
+  homedir = os.path.expanduser("~") + dir_delim
   for file in files_to_uninstall:
     fullpath = os.path.expanduser("~") + dir_delim + "." + file
     if os.path.exists(fullpath) or os.path.islink(fullpath):
@@ -81,6 +82,17 @@ def uninstall():
         shutil.rmtree(fullpath)
     else:
       print "File %s not found..." % fullpath
+  for afile in os.listdir(homedir):
+    if afile.startswith("."):
+      ans = raw_input("Would you like to remove this dot file: " + afile + " (Y/q)? ")
+      if ans == "Y":
+        print "Removing", afile
+        if os.path.isdir(homedir + afile):
+          shutil.rmtree(homedir + afile)
+        else:
+          os.unlink(homedir + afile)
+      elif ans == "q":
+        return
 
 if __name__ == "__main__":
   if len(sys.argv) != 2:
