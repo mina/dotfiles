@@ -40,8 +40,18 @@ export TODO="t"
 #export VCPROMPT_EXECUTABLE=~/.vcprompt/bin/vcprompt
 
 # Load Bash It
-source $BASH_IT/bash_it.sh
+if [[ -e $BASH_IT/bash_it.sh ]]
+then
+  source $BASH_IT/bash_it.sh
+fi
 
 # load my stuff
 source ~/.myconfigs
 source ~/.aliases
+
+# load cygwin compatability crap
+if [[ -e ~/.cygwin ]]
+then
+  echo sourcing ~/.cygwin
+  source ~/.cygwin
+fi

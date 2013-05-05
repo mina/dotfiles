@@ -1,0 +1,3 @@
+echo Running .cygwin
+
+alias python="PYTHONHOME=/usr/ python"

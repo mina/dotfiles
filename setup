@@ -8,6 +8,7 @@ import shutil
 
 files = [ "gitconfig", "vim", "vimrc", "myconfigs", "bashrc", "aliases" ]
 mac_linux_only_files = [ "inputrc", "zshrc", "tmux.conf" ]
+cygwin_only_files = [ "cygwin" ]
 
 if platform.system() == "Windows":
   dir_delim = "\\"
@@ -23,12 +24,13 @@ def print_usage():
 
 def get_platform_files():
   global files, mac_linux_only_files
-  if (re.search(r"(linux|darwin)", sys.platform)):
+  if re.search(r"(linux|darwin)", sys.platform):
     print "Running on on linux or Mac."
     files.extend(mac_linux_only_files)
-    return files
-  else:
-    return files
+  if re.search(r"cygwin", sys.platform):
+    print "Running on cygwin"
+    files.extend(cygwin_only_files)
+  return files
 
 def install():
   files_to_install = get_platform_files()
