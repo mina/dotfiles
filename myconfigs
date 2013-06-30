@@ -1,7 +1,11 @@
-export EDITOR=vim
+export EDITOR=`which vim`
+export FCEDITOR=`which vim`
+export GIT_EDITOR=`which vim`
+
+## Path
 
 export PATH=$HOME/bin
-export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
+export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/X11/bin
 export PATH=$PATH:/Library/Frameworks/Python.framework/Versions/2.7/bin
 export PATH=$PATH:/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin
 export PATH=$PATH:/usr/local/mysql/bin
@@ -15,7 +19,7 @@ export GOPATH=$HOME/Repos/mygo
 export PATH=$PATH:/$HOME/Repos/mygo/bin
 export GOROOT=/usr/local/go
 
-export FCEDITOR=`which vim`
+## End path
 
 # run tmux if platform is linux or mac
 PLATFORM=`uname`
@@ -25,4 +29,71 @@ then
   then
     exec tmux -2
   fi
+fi
+
+
+## Aliases:
+
+alias  ..=".."
+alias  ...="../.."
+alias  ....="../../.."
+alias  .....="../../../.."
+alias  ......="../../../../.."
+alias  .......="../../../../../../.."
+# 7 directories should be enough for anyone - bill g
+# # thanks sean.
+
+# ls with some arguments
+alias l="ls"
+alias ll="ls -lh"               # list long
+alias la="ls -a"                # list all
+alias lla="la -alh"             # list all long
+alias lz="ls -tr"               # list by date
+alias lsa="ls -ld .*"           # list only dotfiles
+alias lsd="ls -d -- *(/)"       # list only dirs
+alias lsdirs="ls -d -- *(-/DN)" # list only dirs and links
+alias lsx="ls -- *(*)"          # list only executables
+alias lsnew="ls -rtl"           # list by new
+alias lsold="ls -tl"            # list by old
+alias lssmall="ls -Sl"          # list by small
+alias lsbig="ls -Slr"           # list by big
+
+alias be="bundle exec"
+
+alias tm="tmux -2"
+
+# Quick edit zshrc
+alias ez='vim ~/.zshrc'
+alias sz='source ~/.zshrc'
+
+# quick edit aliase
+alias ea='vim ~/.aliases'
+alias sa='source ~/.aliases'
+
+#interactive rm
+alias rm="rm -i"
+
+#human readable disk space
+alias df="df -h"
+
+alias h="history | tail"
+alias rps="cd ~/Repos"
+
+## end aliases
+
+# Load RVM, if you are using it
+if [[ -s $HOME/.rvm/scripts/rvm ]]
+then
+  source $HOME/.rvm/scripts/rvm
+  # Add rvm gems and nginx to the path
+  export PATH=$PATH:~/.gem/ruby/1.8/bin:/opt/nginx/sbin
+fi
+
+## Compaatability crap
+
+# load cygwin compatability crap
+if [[ -e ~/.cygwin ]]
+then
+  echo sourcing ~/.cygwin
+  source ~/.cygwin
 fi

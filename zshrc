@@ -8,19 +8,13 @@ ZSH_THEME="robbyrussell"
 COMPLETION_WAITING_DOTS="true"
 
 if [ -f $ZSH/oh-my-zsh.sh ] ; then
-  . $ZSH/oh-my-zsh
+  . $ZSH/oh-my-zsh.sh
 fi
 
 # turn off zsh's autocorrect
 unsetopt correct_all
 
-
 # Plugins
 plugins=(git brew osx rvm ruby gem rails3 rails)
 
-# This loads RVM into a shell session.
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-
-
-source ~/.aliases
 source ~/.myconfigs
