@@ -92,8 +92,12 @@ fi
 ## Compaatability crap
 
 # load cygwin compatability crap
-if [[ -e ~/.cygwin ]]
+if [[ `uname` == *cygwin*]]
 then
-  echo sourcing ~/.cygwin
   source ~/.cygwin
+fi
+
+if [[ `uname` == *MINGW* ]]
+then
+  source ~/.mingw
 fi
