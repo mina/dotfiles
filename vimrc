@@ -217,7 +217,7 @@ if exists("&undodir")
   set undodir=$HOME/.vimundo//
 endif
 " Creating backup dirs if they don't exist
-for dir in [&backupdir, &directory, &undodir, &directory]
+for dir in [&backupdir, &undodir, &directory]
   if !isdirectory(expand(dir))
     call mkdir(expand(dir), "p")
   endif
