@@ -2,35 +2,45 @@
 if v:progname =~? "evim"
   finish
 endif
+
 let &t_Co = 256
+
 " forget about the future, and lets get on with the past
 set nocompatible
 set novisualbell
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
+
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
 else
   set backup		" keep a backup file
 endif
+
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
+
 " Don't use Ex mode, use Q for formatting
 map Q gq
+
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
+
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
   set mouse=a
 endif
+
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
   syntax on
   set incsearch
 endif
+
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
   " Enable file type detection.
@@ -56,6 +66,7 @@ if has("autocmd")
 else
   set autoindent		" always set autoindenting on
 endif " has("autocmd")
+
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
 " Only define it when not defined already.
@@ -63,6 +74,7 @@ if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
         \ | wincmd p | diffthis
 endif
+
 " Custom variables I inserted
 set tabstop=2
 set shiftwidth=2
@@ -103,9 +115,10 @@ set textwidth=79
 set formatoptions=qrn1
 set colorcolumn=85
 nnoremap <leader>= ggvG=
+
 call pathogen#infect()
 colorscheme molokai
-"set guifont=Menlo\ Regular:h12
+
 set guifont=DejaVu\ Sans\ Mono\ 10
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
@@ -119,28 +132,19 @@ function! CleanupWhitespace() " {{
   let @/ = _s
   call cursor(l, c)
 endfunction "}}
-function! CleanupBrackets() " {{
-  let l = line(".")
-  let c = col(".")
-  keepjumps silent :%s/\v\zs(\S)([()])\ze(([^"]*"[^"]*")*[^"]*|[^"]*)$/\1 \2/e
-  keepjumps silent :%s/\v\zs([()])([^ "])\ze(([^"]*"[^"]*")*[^"]*|[^"]*)$/\1 \2/e
-  call cursor(l, c)
-endfunction "}}
 augroup cleanUp  "{{
   autocmd!
   " Delete trailing whitespace on save
   autocmd BufWritePre * :call CleanupWhitespace()
-  autocmd BufWritePre *.lua :call CleanupBrackets()
 augroup END  " }}
-augroup fileOpen "{{
-  autocmd!
-  "set fold lever start
-augroup END "}}
-"let &winwidth = &lines * 7 / 10
+
 nnoremap <leader>ev :tabnew $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
+
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+
 nnoremap p p"p=`]
+
 " Tab management --------------- {{
 " kill window
 nnoremap K :q<cr>
@@ -170,9 +174,6 @@ nnoremap <leader>gm :Gmove
 nnoremap <leader>gc :Gcommit
 nnoremap <leader>gs :Gstatus
 nnoremap <leader>gb :Gblame
-":autocmd filetype lua
-":autocmd FileType lua
-iabbrev ret return
 onoremap b /end<cr>
 onoremap in( :<c-u>normal! f(vi(<cr>
 onoremap in" :<c-u>normal! f"vi"<cr>
@@ -182,16 +183,7 @@ onoremap in{ :<c-u>normal! f{vi{<cr>
 onoremap i< :<c-u>normal! T>vt<<cr>
 onoremap ie :<c-u>execute "normal! /\w\+@"<cr>
 onoremap ih :<c-u>execute "normal! /@\r:nohlsearch\rkvg_"<cr>
-"grep vimscript
-"nnoremap <leader>g :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
-"
-function! OpenDefaultFile()
-  "execute "normal! :vsplit Repos/WhoDunIt/app/test.lua\<cr>"
-endfunction
-augroup vimStart
-  autocmd!
-  autocmd VimEnter * call OpenDefaultFile()
-augroup END
+
 nnoremap <c-f> :call FoldColumnToggle()<cr>
 function! FoldColumnToggle()
   if &foldcolumn
@@ -200,7 +192,9 @@ function! FoldColumnToggle()
     setlocal foldcolumn=4
   endif
 endfunction
+
 noremap <c-q> :call QuickFixToggle()<cr>
+
 let g:quickfix_is_open = 1
 function! QuickFixToggle()
   echo g:quickfix_is_open
@@ -213,6 +207,7 @@ function! QuickFixToggle()
   endif
   copen
 endfunction
+
 "Backup stuff {{
 set backup
 set backupdir=$HOME/.vimbackup//
@@ -222,19 +217,13 @@ if exists("&undodir")
   set undodir=$HOME/.vimundo//
 endif
 " Creating backup dirs if they don't exist
-if has('win32')
-  let s:mkdirArgStr = '"\%HOME\%\.'
-else
-  let s:mkdirArgStr = '-p "$HOME/.'
-endif
-if !isdirectory(expand("~/.vimbackup"))
-  silent execute ' !mkdir '.s:mkdirArgStr.'vimbackup"'
-  silent execute ' !mkdir '.s:mkdirArgStr.'vimswap"'
-  silent execute ' !mkdir '.s:mkdirArgStr.'vimviews"'
-  silent execute ' !mkdir '.s:mkdirArgStr.'vimundo"'
-endif
+for dir in [&backupdir, &directory, &undodir, &directory]
+  if !isdirectory(expand(dir))
+    call mkdir(expand(dir), "p")
+  endif
+endfor
 "  }}
-"
+
 " tagbar-------------- {{
 nnoremap <leader>b :TagbarToggle<cr>
 let g:tagbar_width = 20
@@ -252,6 +241,7 @@ function! s:DiffWithSaved()
   exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
 endfunction
 com! DiffSaved call s:DiffWithSaved()
+
 "edit filetype
 nnoremap <leader>ft :set filetype=
 :let g:html_indent_script1 = "inc"
