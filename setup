@@ -6,7 +6,7 @@ import os
 import platform
 import shutil
 
-files = [ "gitconfig", "vim", "vimrc", "myconfigs", "bashrc", "aliases" ]
+files = [ "gitconfig", "vim", "vimrc", "myconfigs", "bashrc" ]
 mac_linux_only_files = [ "inputrc", "zshrc", "tmux.conf" ]
 cygwin_only_files = [ "cygwin" ]
 
