@@ -9,6 +9,7 @@ import shutil
 files = [ "gitconfig", "vim", "vimrc", "myconfigs", "bashrc" ]
 mac_linux_only_files = [ "inputrc", "zshrc", "tmux.conf" ]
 cygwin_only_files = [ "cygwin" ]
+mingw_files = [ "mingw" ]
 
 if platform.system() == "Windows":
   dir_delim = "\\"
@@ -30,6 +31,9 @@ def get_platform_files():
   if re.search(r"cygwin", sys.platform):
     print "Running on cygwin"
     files.extend(cygwin_only_files)
+  if re.search(r"win", sys.platform):
+    print "Running on mingw"
+    files.extend(mingw_files)
   return files
 
 def install():
