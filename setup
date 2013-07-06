@@ -7,7 +7,7 @@ import platform
 import shutil
 
 files = [ "gitconfig", "vim", "vimrc", "myconfigs", "bashrc" ]
-mac_linux_only_files = [ "inputrc", "zshrc", "tmux.conf" ]
+mac_linux_only_files = [ "inputrc", "zshrc", "tmux.conf", "linux" ]
 cygwin_only_files = [ "cygwin" ]
 mingw_files = [ "mingw", "profile" ]
 

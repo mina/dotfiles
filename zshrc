@@ -17,4 +17,10 @@ unsetopt correct_all
 # Plugins
 plugins=(git brew osx rvm ruby gem rails3 rails)
 
-source ~/.myconfigs
+if [[ -e ~/.myconfigs ]]
+then
+  if [[ $MY_CONFIGS != "loaded" ]]
+  then
+    source ~/.myconfigs
+  fi
+fi

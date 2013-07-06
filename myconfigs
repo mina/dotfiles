@@ -64,10 +64,6 @@ alias tm="tmux -2"
 alias ez='vim ~/.zshrc'
 alias sz='source ~/.zshrc'
 
-# quick edit aliase
-alias ea='vim ~/.aliases'
-alias sa='source ~/.aliases'
-
 #interactive rm
 alias rm="rm -i"
 
@@ -75,7 +71,8 @@ alias rm="rm -i"
 alias df="df -h"
 
 alias h="history | tail"
-alias rps="cd ~/Repos"
+alias rps='cd `echo $REPOS`'
+alias dotfiles='cd `echo $REPOS/dotfiles`'
 
 ## end aliases
 
@@ -99,3 +96,11 @@ if [[ `uname` == *MINGW* ]]
 then
   source ~/.mingw
 fi
+
+if [[ `uname` == *linux* ]]
+then
+  source ~/.linux
+fi
+
+
+MY_CONFIGS="loaded"

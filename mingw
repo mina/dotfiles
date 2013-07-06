@@ -1,1 +1,6 @@
 PATH=$PATH:/c/Program\ Files\ \(x86\)/Git/bin
+alias mach=~/Dev/Repos/mozilla-central/mach
+alias firefox-dev=/c/Users/Mina/Dev/Repos/mozilla-central/obj-i686-pc-mingw32/dist/bin/firefox.exe
+alias metro-dev="/c/Users/Mina/Dev/Repos/mozilla-central/obj-i686-pc-mingw32/dist/bin/firefox.exe -metrodesktop"
+
+REPOS=~/Dev/Repos
