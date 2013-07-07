@@ -132,11 +132,16 @@ function! CleanupWhitespace() " {{
   let @/ = _s
   call cursor(l, c)
 endfunction "}}
+
 augroup cleanUp  "{{
   autocmd!
   " Delete trailing whitespace on save
   autocmd BufWritePre * :call CleanupWhitespace()
 augroup END  " }}
+
+if (match(getcwd(), "mozilla-central") != -1)
+  autocmd! cleanUp BufWritePre *
+end
 
 nnoremap <leader>ev :tabnew $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
