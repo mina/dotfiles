@@ -72,7 +72,7 @@ alias df="df -h"
 
 alias h="history | tail"
 alias rps='cd `echo $REPOS`'
-alias dotfiles='cd `echo $REPOS/dotfiles`'
+alias dotf='cd `echo $REPOS/dotfiles`'
 
 ## end aliases
 
@@ -97,7 +97,7 @@ then
   source ~/.mingw
 fi
 
-if [[ `uname` == *linux* ]]
+if [[ `uname` == *linux* || `uname` == *Darwin* ]]
 then
   source ~/.linux
 fi
