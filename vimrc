@@ -80,6 +80,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 ino jj <esc>
+
 " code fold settings
 set foldmethod=indent
 set foldnestmax=10
@@ -123,6 +124,7 @@ set guifont=DejaVu\ Sans\ Mono\ 10
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+
 function! CleanupWhitespace() " {{
   let _s = @/
   let l  = line(".")
@@ -133,6 +135,10 @@ function! CleanupWhitespace() " {{
   call cursor(l, c)
 endfunction "}}
 
+function! CleanupWhitespaceInLine() " {{
+  keepjumps :s/\v\s+$//e
+endfunction "}}
+
 augroup cleanUp  "{{
   autocmd!
   " Delete trailing whitespace on save
@@ -141,6 +147,8 @@ augroup END  " }}
 
 if (match(getcwd(), "mozilla-central") != -1)
   autocmd! cleanUp BufWritePre *
+
+  ino jj <esc>h :call CleanupWhitespaceInLine() <cr>
 end
 
 nnoremap <leader>ev :tabnew $MYVIMRC<cr>

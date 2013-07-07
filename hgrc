@@ -1,11 +1,12 @@
 [defaults]
 diff = -p -U 8
 qdiff = -p -U 8
-qnew = -U
+qnew = -Ue
 
 [diff]
 git = 1
 unified = 8
+showfunc = 1
 
 [ui]
 username = Mina Almasry <almasry.mina@gmail.com>
