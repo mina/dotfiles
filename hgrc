@@ -3,6 +3,11 @@ username = Mina Almasry <almasry.mina@gmail.com>
 
 [extensions]
 mq =
+color =
+pager =
+
+[pager]
+pager = LESS='FRX' less
 
 [defaults]
 diff = -p -U 8
@@ -13,3 +18,20 @@ qnew = -Ue
 git = 1
 unified = 8
 showfunc = 1
+
+[color]
+status.modified = blue bold underline red_background
+status.added = green bold
+status.removed = red bold blue_background
+status.deleted = cyan bold underline
+status.unknown = magenta bold underline
+status.ignored = black bold
+diff.diffline = bold
+diff.extended = cyan bold
+diff.file_a = red bold
+diff.file_b = green bold
+diff.hunk = magenta
+diff.deleted = red
+diff.inserted = green
+diff.changed = white
+diff.trailingwhitespace = bold red_background
