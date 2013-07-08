@@ -33,11 +33,12 @@ fi
 
 ## Aliases:
 
-alias  ...=../..
-alias  ....=../../..
-alias  .....=../../../..
-alias  ......=../../../../..
-alias  .......=../../../../../../..
+alias  ..="cd .."
+alias  ...="cd ../.."
+alias  ....="cd ../../.."
+alias  .....="cd ../../../.."
+alias  ......="cd ../../../../.."
+alias  .......="cd ../../../../../../.."
 # 7 directories should be enough for anyone - bill g
 # # thanks sean.
 
