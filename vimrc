@@ -264,4 +264,5 @@ nnoremap <leader>ft :set filetype=
 set clipboard=unnamedplus
 
 " highlight trailing whitespaces
+highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
