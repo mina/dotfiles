@@ -22,7 +22,7 @@ export GOROOT=/usr/local/go
 
 # run tmux if platform is linux or mac
 PLATFORM=`uname`
-if [[ $PLATFORM == *Linux* || $PLATFORM == *mac* ]]
+if [[ $PLATFORM == *Linux* || $PLATFORM == *Darwin* ]]
 then
   if [[ $TERM != "screen" ]]
   then
