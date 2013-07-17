@@ -5,6 +5,7 @@ username = Mina Almasry <almasry.mina@gmail.com>
 mq =
 color =
 pager =
+purge =
 
 [pager]
 pager = LESS='FRX' less
@@ -13,6 +14,7 @@ pager = LESS='FRX' less
 diff = -p -U 8
 qdiff = -p -U 8
 qnew = -Ue
+qrefresh = -e
 
 [diff]
 git = 1
