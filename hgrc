@@ -1,6 +1,9 @@
 [ui]
 username = Mina Almasry <almasry.mina@gmail.com>
 
+[hooks]
+post-push = hg phase --force --draft "mq()"
+
 [extensions]
 mq =
 color =
