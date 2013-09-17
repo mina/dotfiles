@@ -63,6 +63,7 @@ alias df="df -h"
 alias h="history | tail"
 alias rps='cd `echo $REPOS`'
 alias dotf='cd `echo $REPOS/dotfiles`'
+alias moz='cd `echo $REPOS/mozilla-central`'
 
 ## end aliases
 

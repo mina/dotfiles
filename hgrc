@@ -10,6 +10,9 @@ color =
 pager =
 purge =
 
+[paths]
+try = ssh://hg.mozilla.org/try
+
 [pager]
 pager = LESS='FRX' less
 
