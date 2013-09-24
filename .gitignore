@@ -1,7 +1,5 @@
 *~
 .DS_STORE
-vim/bundle/command-t
-vim/plugin/command-t.vim
 *.[oa]
 vim/.netrwhist
 Icon*
