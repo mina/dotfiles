@@ -19,6 +19,7 @@
   sm = submodule
   ph = push
   pl = pull
+  moz-patch = format-patch -U8 -p --subject-prefix=""
 [push]
   default = current
 [log]
