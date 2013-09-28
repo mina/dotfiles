@@ -95,6 +95,6 @@ fi
 
 #mozilla stuff
 export DM_TRANS=adb
-[[ `uname` == *Darwin* ]] && export PATH=$PATH:$REPOS/adt-bundle-mac-x86_64-20130729/sdk/tools:$REPOS/adt-bundle-mac-x86_64-20130729/sdk/build-tools:$REPOS/adt-bundle-mac-x86_64-20130729/sdk/platform-tools
+[[ `uname` == *Darwin* ]] && export PATH=$PATH:$REPOS/adt-bundle-mac-x86_64-20130729/sdk/tools:$REPOS/adt-bundle-mac-x86_64-20130729/sdk/build-tools:$REPOS/adt-bundle-mac-x86_64-20130729/sdk/platform-tools:~/bin/moz-git-tools
 
 MY_CONFIGS="loaded"
