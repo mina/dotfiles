@@ -156,8 +156,6 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 
-nnoremap p p"p=`]
-
 " Tab management --------------- {{
 " kill window
 nnoremap K :q<cr>
