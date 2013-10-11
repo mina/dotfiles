@@ -258,9 +258,6 @@ nnoremap <leader>ft :set filetype=
 :let g:html_indent_script1 = "inc"
 :let g:html_indent_style1 = "inc"
 
-" set clipboard
-set clipboard=unnamedplus
-
 " highlight trailing whitespaces
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
