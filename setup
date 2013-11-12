@@ -6,10 +6,10 @@ import os
 import platform
 import shutil
 
-files = [ "gitconfig", "vim", "vimrc", "myconfigs", "bashrc", "hgrc" ]
-mac_linux_only_files = [ "inputrc", "zshrc", "tmux.conf", "linux", "bash_profile" ]
-cygwin_only_files = [ "cygwin" ]
-mingw_files = [ "mingw", "profile" ]
+files = [ "gitconfig", "vim", "vimrc", "myconfigs", "hgrc" ]
+bash_files = [ "inputrc",   "zshrc", "tmux.conf", "linux", "bash_profile", \
+               "myconfigs", "bashrc" ]
+powershell_files = [ "Microsoft.PowerShell_profile.ps1" ];
 
 if platform.system() == "Windows":
   dir_delim = "\\"
@@ -24,22 +24,36 @@ def print_usage():
   print "uninstall\tUninstall dotfiles from ~" + dir_delim + ".<file>"
 
 def get_platform_files():
-  global files, mac_linux_only_files
+  global files, bash_files, powershell_files
   if re.search(r"(linux|darwin)", sys.platform):
-    print "Running on on linux or Mac."
-    files.extend(mac_linux_only_files)
-  if re.search(r"cygwin", sys.platform):
-    print "Running on cygwin"
-    files.extend(cygwin_only_files)
+    print "Running on bash."
+    files.extend(bash_files)
   if re.search(r"win", sys.platform):
-    print "Running on mingw"
-    files.extend(mingw_files)
+    print "Running on powershell"
+    files.extend(powershell_files)
   return files
 
 def install():
   files_to_install = get_platform_files()
 
   os.chdir(os.path.abspath(os.path.dirname(__file__)))
+
+  # We also need to install the profile.
+  source = os.path.realpath(os.path.dirname(__file__)) + "\\Microsoft.PowerShell_profile.ps1"
+  dest = os.path.expanduser("~") + "\\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
+
+  # Remove the profile if it exists
+  if os.path.exists(dest) or os.path.islink(dest):
+    print "Removing %s... " % dest
+    try:
+      os.remove(dest)
+    except(OSError):
+      shutil.rmtree(dest)
+  else:
+    print "File %s not found..." % dest
+
+  print "Copying " + source + " to " + dest
+  shutil.copy2(source, dest)
 
   for file in files_to_install:
     if platform.system() == "Windows":
