@@ -5,23 +5,19 @@ import re
 import os
 import platform
 import shutil
+import datetime
 
-files = [ "gitconfig", "vim", "vimrc", "myconfigs", "hgrc" ]
-bash_files = [ "inputrc",   "zshrc", "tmux.conf", "linux", "bash_profile", \
-               "myconfigs", "bashrc" ]
+files = [ ".gitconfig", ".vim", ".vimrc", ".myconfigs", ".hgrc" ]
+bash_files = [ ".inputrc",   ".zshrc", ".tmux.conf", ".linux", ".bash_profile", \
+               ".myconfigs", ".bashrc" ]
 powershell_files = [ "Microsoft.PowerShell_profile.ps1" ];
-
-if platform.system() == "Windows":
-  dir_delim = "\\"
-else:
-  dir_delim = "/"
 
 def print_usage():
   global dir_delim
   print "Usage:"
   print "help\t\tPrint usage"
-  print "install\t\tInstall dotfiles to ~" + dir_delim + ".<file>"
-  print "uninstall\tUninstall dotfiles from ~" + dir_delim + ".<file>"
+  print "install\t\tInstall dotfiles to ~/.<file>"
+  print "uninstall\tUninstall dotfiles from ~/.<file>"
 
 def get_platform_files():
   global files, bash_files, powershell_files
@@ -30,59 +26,38 @@ def get_platform_files():
     files.extend(bash_files)
   if re.search(r"win", sys.platform):
     print "Running on powershell"
-    files.extend(powershell_files)
+    raise Exception("Not implemented for windows")
   return files
 
 def install():
   files_to_install = get_platform_files()
+  home_dir = os.path.expanduser("~")
+  backup_dir = os.path.join(home_dir, "dotfile_backup_" + datetime.datetime.now().isoformat())
+  dotfiles_dir = os.path.realpath(os.path.dirname(__file__))
 
-  os.chdir(os.path.abspath(os.path.dirname(__file__)))
 
-  # We also need to install the profile.
-  source = os.path.realpath(os.path.dirname(__file__)) + "\\Microsoft.PowerShell_profile.ps1"
-  dest = os.path.expanduser("~") + "\\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
+  #Create backup dir
+  os.mkdir(backup_dir)
 
-  # Remove the profile if it exists
-  if os.path.exists(dest) or os.path.islink(dest):
-    print "Removing %s... " % dest
-    try:
-      os.remove(dest)
-    except(OSError):
-      shutil.rmtree(dest)
-  else:
-    print "File %s not found..." % dest
-
-  print "Copying " + source + " to " + dest
-  shutil.copy2(source, dest)
 
   for file in files_to_install:
-    if platform.system() == "Windows":
-      fullpath = os.path.expanduser("~") + "\." + file
-    else:
-      fullpath = os.path.expanduser("~") + dir_delim + "." + file
+    fullpath =  os.path.join(home_dir, file)
 
     if os.path.exists(fullpath) or os.path.islink(fullpath):
-      print "Removing %s... " % fullpath
-      try:
-        os.remove(fullpath)
-      except(OSError):
+      print "Backing up %s... " % fullpath
+      if os.path.isdir(fullpath):
+        shutil.copytree(fullpath, os.path.join(backup_dir, file))
         shutil.rmtree(fullpath)
-    else:
-      print "File %s not found..." % fullpath
+      else:
+        shutil.copy2(fullpath, os.path.join(backup_dir, file))
+        os.remove(fullpath)
 
-    source = os.path.realpath(os.path.dirname(__file__)) + dir_delim + file
-    dest = (os.path.expanduser("~") + dir_delim + "." + file)
+    source = os.path.join(dotfiles_dir, file)
+    dest = os.path.join(home_dir, file)
     print "copying " + source + " to " + dest
 
     if os.path.isdir(source):
-      os.makedirs(dest)
-      for filename in os.listdir(source):
-        if os.path.isdir(source + dir_delim + filename):
-          shutil.copytree(source + dir_delim + filename, \
-                          dest + dir_delim + filename)
-        else:
-          shutil.copy2(source + dir_delim + filename, \
-                       dest + dir_delim + filename)
+      shutil.copytree(source, dest)
     else:
       shutil.copy2(source, dest)
 
