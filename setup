@@ -32,7 +32,7 @@ def get_platform_files():
 def install():
   files_to_install = get_platform_files()
   home_dir = os.path.expanduser("~")
-  backup_dir = os.path.join(home_dir, "dotfile_backup_" + datetime.datetime.now().isoformat())
+  backup_dir = os.path.join(home_dir, "dotfiles_backup_" + datetime.datetime.now().isoformat())
   dotfiles_dir = os.path.realpath(os.path.dirname(__file__))
 
 
@@ -54,12 +54,9 @@ def install():
 
     source = os.path.join(dotfiles_dir, file)
     dest = os.path.join(home_dir, file)
-    print "copying " + source + " to " + dest
+    print "Symlinking " + source + " to " + dest
 
-    if os.path.isdir(source):
-      shutil.copytree(source, dest)
-    else:
-      shutil.copy2(source, dest)
+    os.symlink(source, dest)
 
 
 def uninstall():
