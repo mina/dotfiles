@@ -98,4 +98,5 @@ fi
 export DM_TRANS=adb
 [[ `uname` == *Darwin* ]] && export PATH=$PATH:$REPOS/adt-bundle-mac-x86_64-20130729/sdk/tools:$REPOS/adt-bundle-mac-x86_64-20130729/sdk/build-tools:$REPOS/adt-bundle-mac-x86_64-20130729/sdk/platform-tools:~/bin/moz-git-tools
 
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 MY_CONFIGS="loaded"
