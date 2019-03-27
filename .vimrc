@@ -84,7 +84,7 @@ ino jj <esc>
 " code fold settings
 set foldmethod=indent
 set foldnestmax=10
-set foldlevelstart=1
+set foldlevelstart=99
 let Tlist_Ctags_Cmd="/usr/local/bin/ctags"
 let Tlist_WinWidth=50
 map <F4> :TlistToggle<cr>
