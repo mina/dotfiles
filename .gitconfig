@@ -1,12 +1,12 @@
 [user]
-	name = Mina Almasry
-	email = almasrymina@google.com
+  name = Mina Almasry
+  email = minamm@google.com
 [color]
   branch = auto
   diff = auto
   interactive = auto
   status = auto
-	ui = true
+  ui = true
 [alias]
   lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
   a = add
@@ -26,4 +26,4 @@
   decorate = true
   format = graph
 [core]
-	autocrlf = input
+  autocrlf = input
