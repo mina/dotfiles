@@ -24,10 +24,11 @@ def get_platform_files():
   if re.search(r"(linux|darwin)", sys.platform):
     print "Running on bash."
     files.extend(bash_files)
+    return files
   if re.search(r"win", sys.platform):
     print "Running on powershell"
     raise Exception("Not implemented for windows")
-  return files
+    return files
 
 def install():
   files_to_install = get_platform_files()
