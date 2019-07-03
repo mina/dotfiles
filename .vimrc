@@ -76,9 +76,9 @@ if !exists(":DiffOrig")
 endif
 
 " Custom variables I inserted
-set tabstop=2
-set shiftwidth=2
-set expandtab
+" set tabstop=8
+" set shiftwidth=8
+" set expandtab
 ino jj <esc>
 
 " code fold settings

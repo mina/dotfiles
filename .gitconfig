@@ -1,6 +1,6 @@
 [user]
   name = Mina Almasry
-  email = minamm@google.com
+  email = almasrymina@google.com
 [color]
   branch = auto
   diff = auto
@@ -27,3 +27,6 @@
   format = graph
 [core]
   autocrlf = input
+[sendemail]
+  from = Mina Almasry <almasrymina@google.com>
+  smtpserver = /usr/bin/sendgmr
