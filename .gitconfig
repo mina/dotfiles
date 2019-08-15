@@ -33,3 +33,5 @@
   smtpserver = /usr/bin/sendgmr
 [credential]
   helper = cache
+[rerere]
+  enabled = 1
