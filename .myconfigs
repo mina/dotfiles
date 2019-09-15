@@ -27,19 +27,20 @@ alias  .......="cd ../../../../../../.."
 # # thanks sean.
 
 # ls with some arguments
-alias l="ls"
-alias ll="ls -lh"               # list long
-alias la="ls -a"                # list all
-alias lla="la -alh"             # list all long
-alias lz="ls -tr"               # list by date
-alias lsa="ls -ld .*"           # list only dotfiles
-alias lsd="ls -d -- *(/)"       # list only dirs
-alias lsdirs="ls -d -- *(-/DN)" # list only dirs and links
-alias lsx="ls -- *(*)"          # list only executables
-alias lsnew="ls -rtl"           # list by new
-alias lsold="ls -tl"            # list by old
-alias lssmall="ls -Sl"          # list by small
-alias lsbig="ls -Slr"           # list by big
+alias l="ls --color"
+alias ls="ls --color"
+alias ll="ls -lh --color"               # list long
+alias la="ls -a --color"                # list all
+alias lla="la -alh --color"             # list all long
+alias lz="ls -tr --color"               # list by date
+alias lsa="ls -ld .* --color"           # list only dotfiles
+alias lsd="ls -d -- *(/) --color"       # list only dirs
+alias lsdirs="ls -d -- *(-/DN) --color" # list only dirs and links
+alias lsx="ls -- *(*) --color"          # list only executables
+alias lsnew="ls -rtl --color"           # list by new
+alias lsold="ls -tl --color"            # list by old
+alias lssmall="ls -Sl --color"          # list by small
+alias lsbig="ls -Slr --color"           # list by big
 
 alias be="bundle exec"
 
