@@ -30,3 +30,5 @@
 [sendemail]
   from = Mina Almasry <almasrymina@google.com>
   smtpserver = /usr/bin/sendgmr
+[credential]
+  helper = cache
