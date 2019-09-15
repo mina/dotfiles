@@ -27,6 +27,7 @@
   format = graph
 [core]
   autocrlf = input
+  editor = vim
 [sendemail]
   from = Mina Almasry <almasrymina@google.com>
   smtpserver = /usr/bin/sendgmr
