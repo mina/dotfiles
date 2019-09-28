@@ -261,3 +261,6 @@ nnoremap <leader>ft :set filetype=
 " highlight trailing whitespaces
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
+
+" gitgutter update
+autocmd BufWritePost * GitGutter
