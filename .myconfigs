@@ -105,4 +105,6 @@ export GOPATH=~/go
 
 export PROMPT_COMMAND="history -a; history -n"
 
+export TERM=screen
+
 MY_CONFIGS="loaded"
