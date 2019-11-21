@@ -35,3 +35,5 @@
   helper = cache
 [rerere]
   enabled = 1
+[am]
+	threeWay = true
