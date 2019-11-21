@@ -285,3 +285,6 @@ Plugin 'mileszs/ack.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+" Configure syntastic python checkers:
+let g:syntastic_python_checkers = ['gpylint']
