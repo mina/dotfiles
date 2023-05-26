@@ -69,7 +69,7 @@ alias h="history | tail"
 alias rps='cd `echo $REPOS`'
 alias dotf='cd `echo $REPOS/dotfiles`'
 
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+# PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 
 alias konjurer='/google/data/ro/projects/platforms/prodkernel/konjurer/konjurer'
 alias corevirt-reservation=/google/data/ro/teams/vanadium/corevirt_reservation/corevirt-reservation
