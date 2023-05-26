@@ -43,3 +43,6 @@ diff.deleted = red
 diff.inserted = green
 diff.changed = white
 diff.trailingwhitespace = bold red_background
+
+[alias]
+show = log --patch --rev

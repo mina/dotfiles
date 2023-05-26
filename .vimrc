@@ -277,10 +277,13 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'https://github.com/tpope/vim-surround'
 Plugin 'https://github.com/tpope/vim-sleuth'
-Plugin 'wincent/command-t'
+Plugin 'https://github.com/wincent/command-t'
 Plugin 'vim-syntastic/syntastic'
+Plugin 'file:///usr/local/google/home/almasrymina/.vim/plugin/cscope_maps.vim'
 " Plugin 'ycm-core/YouCompleteMe'
 Plugin 'mileszs/ack.vim'
+
+cs add $CSCOPE_DB
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

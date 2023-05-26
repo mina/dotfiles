@@ -28,12 +28,3 @@ if [[ -e $BASH_IT/bash_it.sh ]]
 then
   source $BASH_IT/bash_it.sh
 fi
-
-# load my stuff
-if [[ -e ~/.myconfigs ]]
-then
-  if [[ $MY_CONFIGS != "loaded" ]]
-  then
-    source ~/.myconfigs
-  fi
-fi

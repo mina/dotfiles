@@ -8,7 +8,7 @@
   status = auto
   ui = true
 [alias]
-  lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  lol = log --decorate --pretty=cite --abbrev-commit
   a = add
   ap = add -p
   s = status -sb
@@ -19,6 +19,8 @@
   sm = submodule
   ph = push
   pl = pull
+  df = diff --color-words
+  sh = show --color-words
   moz-patch = format-patch -U8 -p --subject-prefix=""
 [push]
   default = current
@@ -34,6 +36,18 @@
 [credential]
   helper = cache
 [rerere]
-  enabled = 1
+  enabled = 0
 [am]
-	threeWay = true
+  threeWay = true
+[pretty]
+  mine = %C(yellow)commit %h (\"%s\") %C(red)%d%n%C(white)Author: %an <%ae>%nDate:   %ad%n%n%w(0,4,4)%B%n
+  cite = %C(yellow)%h %C(white)(\"%s\") %C(red)%d
+[format]
+  pretty = mine
+[http]
+	cookiefile = /usr/local/google/home/almasrymina/.gitcookies
+[url "sso://cos/"]
+	insteadOf = https://cos.googlesource.com/
+	insteadOf = https://cos-review.googlesource.com/
+	insteadOf = http://cos.googlesource.com/
+	insteadOf = http://cos-review.googlesource.com/

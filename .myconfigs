@@ -1,3 +1,5 @@
+#!/bin/sh
+
 export EDITOR=`which vim`
 export FCEDITOR=`which vim`
 export GIT_EDITOR=`which vim`
@@ -5,14 +7,20 @@ echo "running .myconfigs"
 
 ## Path
 
+export PATH=""
+export PATH=$PATH:/usr/local/buildtools/java/jdk/bin
+export PATH=$PATH:/usr/local/sbin
+export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:/usr/sbin
+export PATH=$PATH:/usr/bin
+export PATH=$PATH:/sbin
+export PATH=$PATH:/bin
+export PATH=$PATH:/usr/local/google/home/almasrymina/bin
+export PATH=$PATH:/usr/local/google/home/almasrymina/.local/bin
+export PATH=$PATH:/google/src/cloud/almasrymina/qemu-dev-tools/google3/experimental/users/almasrymina/qemu-dev-tools
+export PATH=$PATH:/google/src/cloud/almasrymina/cos-dev-tools/google3/experimental/users/almasrymina/cos-dev
+# export PATH=$PATH:/google/src/head/depot/google3/experimental/users/almasrymina/qemu-dev-tools
 export PATH=$PATH:$HOME/bin
-
-[[ `uname` == *Darwin* ]] && export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/X11/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin:`echo ~`/bin
-[[ -e /usr/local/mysql ]] && export PATH=$PATH:/usr/local/mysql/bin
-[[ -e $HOME/.rvm/bin ]] && export PATH=$PATH:$HOME/.rvm/bin
-export PATH=$PATH:~/.local/bin
-
-export CDPATH=$CDPATH:`echo ~`/Repos:`echo ~`
 
 ## End path
 
@@ -60,40 +68,17 @@ alias df="df -h"
 alias h="history | tail"
 alias rps='cd `echo $REPOS`'
 alias dotf='cd `echo $REPOS/dotfiles`'
-alias moz='cd `echo $REPOS/mozilla-central`'
-alias mozg='cd `echo $REPOS/mozilla-central-git`'
-
-## end aliases
-
-# Load RVM, if you are using it
-if [[ -s $HOME/.rvm/scripts/rvm ]]
-then
-  source $HOME/.rvm/scripts/rvm
-  # Add rvm gems and nginx to the path
-  export PATH=$PATH:~/.gem/ruby/1.8/bin:/opt/nginx/sbin
-fi
-
-## Compaatability crap
-
-# load cygwin compatability crap
-if [[ `uname` == *cygwin* ]]
-then
-  source ~/.cygwin
-fi
-
-if [[ `uname` == *MINGW* ]]
-then
-  source ~/.mingw
-fi
-
-#mozilla stuff
-export DM_TRANS=adb
-[[ `uname` == *Darwin* ]] && export PATH=$PATH:$REPOS/adt-bundle-mac-x86_64-20130729/sdk/tools:$REPOS/adt-bundle-mac-x86_64-20130729/sdk/build-tools:$REPOS/adt-bundle-mac-x86_64-20130729/sdk/platform-tools:~/bin/moz-git-tools
 
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 
 alias konjurer='/google/data/ro/projects/platforms/prodkernel/konjurer/konjurer'
 alias corevirt-reservation=/google/data/ro/teams/vanadium/corevirt_reservation/corevirt-reservation
+
+alias kolada=/google/bin/releases/kernel-tools/kolada/kolada
+alias kt='kokonut test'
+alias ice=/google/bin/releases/kernel-tools/icebreaker-release/ice
+
+## end aliases
 
 export GOROOT=/usr/lib/google-golang/
 export GOPATH=~/go
@@ -101,3 +86,13 @@ export GOPATH=~/go
 export PROMPT_COMMAND="history -a; history -n"
 
 MY_CONFIGS="loaded"
+
+export TERM=screen-256color
+
+alias kperf=/google/bin/releases/kernel-racktest/tests/kperf/kperf
+
+# gcloud
+alias staging_gcloud='CLOUDSDK_API_CLIENT_OVERRIDES_COMPUTE=staging_v1 /google/data/ro/teams/cloud-sdk/gcloud'
+
+source /etc/bash_completion.d/g4d
+source /etc/bash_completion.d/hgd
